@@ -4,11 +4,6 @@ PROG: sprime
 LANG: JAVA
  */
 
-//GIT TEST ABCDEFGHIJKLMNOPQRSTUVWXYZ
-//LORUM IPSUM DOLOR
-//GIT TEST
-//
-
 import java.util.*;
 import java.io.*;
 

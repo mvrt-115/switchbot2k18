@@ -1,4 +1,4 @@
-/*----------------------------------------------------------------------------*/
+c/*----------------------------------------------------------------------------*/
 /* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
 /* Open Source Software - may be modified and shared by FRC teams. The code   */
 /* must be accompanied by the FIRST BSD license file in the root directory of */
@@ -10,10 +10,10 @@ package org.usfirst.frc.team115.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+//import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team115.robot.commands.ExampleCommand;
-import org.usfirst.frc.team115.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team115.robot.subsystems.Elevator;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,10 +22,11 @@ import org.usfirst.frc.team115.robot.subsystems.ExampleSubsystem;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
+
 public class Robot extends TimedRobot {
-	public static final ExampleSubsystem kExampleSubsystem
-			= new ExampleSubsystem();
-	public static OI m_oi;
+	public static OI oi;
+	public static Elevator elevator;
+
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -36,8 +37,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_oi = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		oi = new OI();
+		elevator = new Elevator();
+		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}

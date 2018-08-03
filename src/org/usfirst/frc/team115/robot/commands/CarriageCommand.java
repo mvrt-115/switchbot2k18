@@ -4,11 +4,11 @@ import org.usfirst.frc.team115.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class OuttakeCommand extends Command 
+public class CarriageCommand extends Command 
 {
-	public OuttakeCommand() 
+	public CarriageCommand() 
 	{
-		requires(Robot.intake);
+		requires(Robot.carriage);
 	}
 
 	protected void initialize() 
@@ -18,17 +18,17 @@ public class OuttakeCommand extends Command
 
 	protected void execute() 
 	{
-		Robot.intake.outtakeCube();
+		Robot.carriage.intakeCube(1); //values tbd
 	}
 
 	protected boolean isFinished() 
 	{
-		return !(Robot.oi.outtakePressed());
+		return !(Robot.oi.intakePressed());
 	}
 
 	protected void end() 
 	{
-		Robot.intake.stop();
+		Robot.carriage.stop();
 	}
 
 	protected void interrupted() 

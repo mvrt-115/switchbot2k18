@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team115.robot.subsystems.Carriage;
 import org.usfirst.frc.team115.robot.subsystems.Intake;
 
 /**
@@ -16,8 +18,9 @@ import org.usfirst.frc.team115.robot.subsystems.Intake;
  */
 public class Robot extends TimedRobot 
 {
-	public static final Intake kIntake = new Intake();
 	public static OI oi;
+	public static Intake intake;
+	public static Carriage carriage;
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();

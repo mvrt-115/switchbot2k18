@@ -21,6 +21,7 @@ public class Robot extends TimedRobot
 	public static OI oi;
 	public static Intake intake;
 	public static Carriage carriage;
+	public static int intakePos = 0; //0 = in carriage, 1 = out carriage
 	
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -33,6 +34,8 @@ public class Robot extends TimedRobot
 	public void robotInit() 
 	{
 		oi = new OI();
+		intake = new Intake();
+		carriage = new Carriage();
 		chooser.addDefault("Do Nothing", null);
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);

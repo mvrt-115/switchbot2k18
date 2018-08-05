@@ -1,6 +1,5 @@
 package org.usfirst.frc.team115.robot.subsystems;
 
-import org.usfirst.frc.team115.robot.Robot;
 import org.usfirst.frc.team115.robot.commands.IntakeCommand;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -21,13 +20,9 @@ public class Intake extends Subsystem
 
 	public Intake()  
 	{
-		requires(Robot.carriage);
 		left = new TalonSRX(16);	//left cantalon port tbd
 		right = new TalonSRX(17);   //right cantalon port tbd
 		rot = new TalonSRX(18);     //rot cantalon port tbd
-		right.set(ControlMode.Follower, left.getDeviceID());
-		breakbeam = new DigitalInput(0);
-		intake = new DoubleSolenoid(1, 19, 20); //double solenoid port tbd
 	}
 
 	public void extendIntake() 
@@ -42,31 +37,32 @@ public class Intake extends Subsystem
 	
 	public void intakeCube() 
 	{
-		if (intake.get() != Value.kReverse)
-		{
-			extendIntake();
-		}
-		left.set(ControlMode.PercentOutput, 1);
-		Robot.carriage.intakeCube(1);
+		left.set(ControlMode.PercentOutput, -0.65);
+		right.set(ControlMode.PercentOutput, 0.65);
+		//Robot.carriage.intakeCube(-0.45); //use if carriage is needed
 	}
 	
 	public void outtakeCube() 
 	{
-		if (intake.get() != Value.kReverse)
-		{
-			extendIntake();
-		}
-		left.set(ControlMode.PercentOutput, 1);
-		Robot.carriage.outtakeCube(-1);
+		left.set(ControlMode.PercentOutput, 0.65);
+		right.set(ControlMode.PercentOutput, -0.65);
+		//Robot.carriage.outtakeCube(-1); //use if carriage is needed
 	}
 	
-	public void rotateIntake()
+	public void rotateIn()
 	{
-		
+		rot.set(ControlMode.PercentOutput, 0.65);
 	}
+	
+	public void rotateOut()
+	{
+		rot.set(ControlMode.PercentOutput, -0.65);
+	}
+	
 	public void stop()  
 	{
 		left.set(ControlMode.PercentOutput, 0);
+		right.set(ControlMode.PercentOutput, 0);
 	}
 	
 	public void initDefaultCommand()  

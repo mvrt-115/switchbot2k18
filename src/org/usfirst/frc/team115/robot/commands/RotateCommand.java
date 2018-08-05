@@ -18,7 +18,16 @@ public class RotateCommand extends Command
 
     protected void execute() 
     {
-    	Robot.intake.rotateIntake();
+    	if(Robot.intakePos == 0)
+    	{
+        	Robot.intake.rotateOut();
+        	Robot.intakePos = 1;
+    	}
+    	else
+    	{
+    		Robot.intake.rotateIn();
+    		Robot.intakePos = 0;
+    	}
     }
 
     protected boolean isFinished() 

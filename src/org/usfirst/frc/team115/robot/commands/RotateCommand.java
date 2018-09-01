@@ -22,11 +22,13 @@ public class RotateCommand extends Command
     	{
         	Robot.intake.rotateOut();
         	Robot.intakePos = 1;
+        	Robot.intake.state = 1;
     	}
     	else
     	{
     		Robot.intake.rotateIn();
     		Robot.intakePos = 0;
+    		Robot.intake.state = 2;
     	}
     }
 

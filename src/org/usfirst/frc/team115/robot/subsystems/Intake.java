@@ -21,7 +21,7 @@ public class Intake extends Subsystem
 	public DigitalInput breakbeam;
 	public double setPoint;
 	public double rotations;
-	int state;
+	public int state;
 	
 	public Intake()  
 	{
@@ -100,6 +100,7 @@ public class Intake extends Subsystem
 			if(Hardware.rot.getSelectedSensorPosition(0) > Constants.lowBufferIntakeOut)
 			{
 				stop();
+				state = 3;
 			}
 			else
 			{
@@ -111,6 +112,7 @@ public class Intake extends Subsystem
 			if(Hardware.rot.getSelectedSensorPosition(0) < Constants.lowBufferIntakeIn)
 			{
 				stop();
+				state = 3;
 			}
 			else
 			{
@@ -128,7 +130,7 @@ public class Intake extends Subsystem
 	
 	public void initDefaultCommand()  
 	{
-		setDefaultCommand(new IntakeCommand());
+		
 	}
 }
 

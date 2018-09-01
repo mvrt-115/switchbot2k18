@@ -66,16 +66,6 @@ public class Intake extends Subsystem
 			}
 		}).startPeriodic(0.005);
 	}
-
-	public void extendIntake() 
-	{
-		intake.set(Value.kReverse);
-	}
-
-	public void retractIntake() 
-	{
-		intake.set(Value.kForward);	
-	}
 	
 	public void intakeCube() 
 	{
